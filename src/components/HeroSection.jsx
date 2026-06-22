@@ -71,8 +71,6 @@ export default function HeroSection() {
                     1500,
                     'Full Stack Developer',
                     1500,
-                    'Freelancer',
-                    1500,
                   ]}
                   speed={50}
                   repeat={Infinity}
