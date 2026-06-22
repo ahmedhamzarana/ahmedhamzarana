@@ -35,16 +35,7 @@ export default function ContactSection() {
   ];
 
   const handleDownloadResume = () => {
-    const resumeText = `--- AHMED HAMZA RANA COMPREHENSIVE FLUTTER PROFILE 2026 ---`;
-    const blob = new Blob([resumeText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Ahmed_Hamza_Rana_Flutter_Resume.txt';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    // For demonstration, we'll just alert. In a real app, this would trigger a file download.
   };
 
   return (

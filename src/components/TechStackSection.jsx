@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Smartphone, Database, Terminal, Code, Settings, GitBranch, Github, Layers } from 'lucide-react';
+import { SKILLS_DATA } from '../data.js';
 
 const TABS = [
   { id: 'mobile', label: 'Mobile' },
@@ -9,34 +10,6 @@ const TABS = [
   { id: 'tools', label: 'Tools' }
 ];
 
-const SKILLS_DATA = {
-  mobile: [
-    { name: 'Flutter', level: 'Expert', desc: 'Custom widgets, multiplatform frameworks & performance rendering.' },
-    { name: 'Dart', level: 'Expert', desc: 'Asynchronous event grids, streams & absolute type safety systems.' },
-    { name: 'Firebase', level: 'Advanced', desc: 'Offline listeners, dynamic firestore queries & oauth.' },
-    { name: 'Supabase', level: 'Advanced', desc: 'Realtime database row replication, direct REST calls.' },
-    { name: 'GetX', level: 'State Management', desc: 'Simplified routers, lazy controllers, model views.' },
-    { name: 'Provider', level: 'State Management', desc: 'Inherited reactiveness, clean dependency injection.' }
-  ],
-  backend: [
-    { name: 'ASP.NET Core', level: 'Advanced', desc: 'C# MVC models, entity frameworks, SQL mappings.' },
-    { name: 'Express.js', level: 'Intermediate', desc: 'Fast Node routing, middleware arrays & proxies.' },
-    { name: 'REST APIs', level: 'Expert', desc: 'Scalable data structures, payload serialization.' },
-    { name: 'PHP', level: 'Proficient', desc: 'Backend server rendering, database schemas.' }
-  ],
-  database: [
-    { name: 'Firestore', level: 'Advanced', desc: 'NoSQL subcollections, indexing & storage rules.' },
-    { name: 'MongoDB', level: 'Intermediate', desc: 'JSON documents aggregates, dynamic cluster connections.' },
-    { name: 'MySQL', level: 'Advanced', desc: 'Relational queries, indexes Optimization & scaling.' },
-    { name: 'SQL Server', level: 'Advanced', desc: 'Enterprise data warehouses, store procedures, triggers.' }
-  ],
-  tools: [
-    { name: 'Git', level: 'Expert', desc: 'Branching structures, merge conflict resolution.' },
-    { name: 'GitHub', level: 'Expert', desc: 'Workflow builds, continuous integration pipelines.' },
-    { name: 'VS Code', level: 'Primary IDE', desc: 'Main editor, plugin matrixes, continuous testing.' },
-    { name: 'Visual Studio', level: 'Secondary IDE', desc: 'C# / ASP.NET development hub.' }
-  ]
-};
 
 export default function TechStackSection() {
   const [activeTab, setActiveTab] = useState('mobile');
@@ -67,7 +40,7 @@ export default function TechStackSection() {
         <div className="flex flex-col items-start mb-16">
           <span className="text-xs font-mono text-[#FFD60A] tracking-widest uppercase mb-2">02 // Core Stack</span>
           <h2 className="font-display text-4xl sm:text-5xl font-black text-white text-glow-white tracking-tight">
-            Capabilities Deck
+            Tech Skills & Tools
           </h2>
           <div className="w-12 h-[2px] bg-[#FFD60A] mt-4" />
         </div>
@@ -80,9 +53,8 @@ export default function TechStackSection() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-grow flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-display font-semibold text-xs sm:text-sm tracking-wide transition-all relative cursor-pointer ${
-                  isActive ? 'text-black' : 'text-zinc-400 hover:text-white'
-                }`}
+                className={`flex-grow flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-display font-semibold text-xs sm:text-sm tracking-wide transition-all relative cursor-pointer ${isActive ? 'text-black' : 'text-zinc-400 hover:text-white'
+                  }`}
               >
                 {/* Active Indicator Slide and Glow */}
                 {isActive && (
@@ -92,7 +64,7 @@ export default function TechStackSection() {
                     transition={{ type: 'spring', stiffness: 350, damping: 28 }}
                   />
                 )}
-                
+
                 <span className="relative z-10">{getTabIcon(tab.id)}</span>
                 <span className="relative z-10 font-bold">{tab.label}</span>
               </button>
@@ -138,7 +110,29 @@ export default function TechStackSection() {
                     </div>
 
                     <p className="text-xs text-zinc-500 font-sans mt-4 leading-relaxed font-light">
-                      {skill.desc}
+                      <div className="mt-5">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-[11px] text-zinc-500">
+                            Proficiency
+                          </span>
+
+                          <span className="text-[11px] font-semibold text-[#FFD60A]">
+                            {skill.progress}%
+                          </span>
+                        </div>
+
+                        <div className="h-2 rounded-full bg-zinc-800 overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${skill.progress}%` }}
+                            transition={{
+                              duration: 1,
+                              delay: index * 0.1
+                            }}
+                            className="h-full rounded-full bg-gradient-to-r from-[#FFD60A] via-[#FFC300] to-[#FFA600] shadow-[0_0_15px_rgba(255,214,10,0.4)]"
+                          />
+                        </div>
+                      </div>
                     </p>
                   </div>
 

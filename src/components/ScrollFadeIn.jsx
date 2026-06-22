@@ -1,9 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-
-/**
- * ScrollFadeIn wraps components or sections and uses a native IntersectionObserver
- * to trigger elegant, hardware-accelerated fade-in and slide-up animations.
- */
 export default function ScrollFadeIn({ children, className = '', delay = 0 }) {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const ref = useRef(null);

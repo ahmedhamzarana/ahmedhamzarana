@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Calendar, Briefcase, Landmark, ShieldCheck } from 'lucide-react';
+import { Calendar, Landmark, ShieldCheck, Briefcase } from 'lucide-react';
 import { EXPERIENCE_TIMELINE } from '../data.js';
 
 export default function ExperienceSection() {
@@ -10,74 +10,94 @@ export default function ExperienceSection() {
     >
       <div className="max-w-7xl mx-auto relative z-10">
 
-        {/* Section Header */}
+        {/* Header */}
         <div className="flex flex-col items-start mb-16">
-          <span className="text-xs font-mono text-[#FFD60A] tracking-widest uppercase mb-2">04 // Career Node</span>
-          <h2 className="font-display text-4xl sm:text-5xl font-black text-white text-glow-white tracking-tight">
+          <span className="text-xs font-mono text-[#FFD60A] tracking-widest uppercase mb-2">
+            04 // Career Node
+          </span>
+
+          <h2 className="font-display text-4xl sm:text-5xl font-black text-white">
             Work Experience
           </h2>
+
           <div className="w-12 h-[2px] bg-[#FFD60A] mt-4" />
         </div>
 
-        {/* Minimal Timeline Layout */}
-        <div className="relative max-w-4xl mx-auto pl-6 sm:pl-10 space-y-12">
-          
-          {/* Animated vertical line with yellow neon glow */}
-          <div className="absolute top-0 bottom-0 left-[-1px] w-[2px] bg-gradient-to-b from-[#FFD60A] via-yellow-600 to-transparent shadow-[0_0_8px_#FFD60A]" />
+        {/* Timeline (Education Style Reference Match) */}
+        <div className="relative pl-8 space-y-10 max-w-4xl mx-auto">
 
-          {EXPERIENCE_TIMELINE.map((exp) => (
+          {/* Vertical Line (same as education) */}
+          <div className="absolute left-2 top-5 bottom-0 w-[2px] bg-gradient-to-b from-[#FFD60A] via-yellow-600 to-transparent" />
+
+          {EXPERIENCE_TIMELINE.map((exp, index) => (
             <motion.div
-              key={exp.company}
+              key={index}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               className="relative"
             >
-              {/* Floating Circle Anchor */}
-              <div className="absolute -left-[30px] sm:-left-[49px] top-1.5 w-5 h-5 bg-[#000000] rounded-full border-2 border-[#FFD60A] shadow-[0_0_10px_rgba(255,214,10,0.5)] flex items-center justify-center text-yellow-500" />
 
-              {/* Core Timeline block */}
-              <div className="p-6 rounded-3xl bg-zinc-950 border border-white/5 relative overflow-hidden group hover:border-[#FFD60A]/20 transition-all duration-300">
-                {/* Visual Accent */}
-                <div className="absolute top-0 right-0 p-4 font-mono text-[8px] text-[#FFD60A]/40 uppercase tracking-widest select-none">
-                  INTERN_EXP_01
-                </div>
+              {/* ICON DOT (Education Style Match) */}
+              <div className="
+                absolute -left-[38px] top-5
+                w-8 h-8 rounded-full
+                bg-zinc-950 border border-[#FFD60A]
+                flex items-center justify-center
+                shadow-[0_0_12px_rgba(255,214,10,0.4)]
+                hover:scale-110 transition-transform
+              ">
+                <Briefcase size={14} className="text-[#FFD60A]" />
+              </div>
 
-                {/* Left/Right Header Info */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                  
-                  {/* Left block Info */}
-                  <div className="space-y-1.5">
-                    
-                    {/* Year badge */}
-                    <span className="inline-block px-2.5 py-1 rounded bg-[#FFD60A]/10 border border-[#FFD60A]/20 text-[#FFD60A] text-xs font-mono font-bold tracking-wider uppercase mb-1">
-                      2026
+              {/* CARD (same hover as education) */}
+              <div className="
+                p-5 rounded-2xl bg-zinc-950 border border-white/5
+                hover:border-[#FFD60A]/30
+                hover:-translate-y-1
+                transition-all duration-300
+                relative overflow-hidden group
+              ">
+
+                {/* Glow */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#FFD60A]/[0.03] blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition" />
+
+                {/* YEAR */}
+                <span className="text-xs text-[#FFD60A] font-mono flex items-center gap-2">
+                  <Calendar size={12} />
+                  {exp.duration}
+                </span>
+
+                {/* TITLE */}
+                <h3 className="text-white font-bold mt-2 group-hover:text-[#FFD60A] transition-colors">
+                  {exp.role}
+                </h3>
+
+                {/* COMPANY */}
+                <p className="text-zinc-400 text-sm mt-1 flex items-center gap-2">
+                  <Landmark size={14} />
+                  {exp.company}
+                </p>
+
+                {/* DESCRIPTION */}
+                <p className="text-zinc-500 text-sm mt-3 group-hover:text-zinc-300 transition-colors">
+                  {exp.desc}
+                </p>
+
+                {/* STATUS */}
+                <div className="mt-4 flex items-center justify-between">
+
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck size={12} className="text-green-400" />
+                    <span className="text-[10px] text-green-400 font-mono">
+                      VERIFIED
                     </span>
-
-                    <h3 className="font-display font-black text-2xl text-white group-hover:text-[#FFD60A] transition-colors leading-tight">
-                      {exp.role}
-                    </h3>
-
-                    <div className="flex items-center gap-2 font-display text-sm text-[#A1A1AA] font-bold">
-                      <Landmark size={14} className="text-zinc-500" />
-                      <span>{exp.company}</span>
-                    </div>
-
                   </div>
 
-                  {/* Right metadata badge */}
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-900 border border-white/5 font-mono text-xs text-zinc-400">
-                      <Calendar size={12} className="text-[#FFD60A]" />
-                      <span className="font-bold">2 Months</span>
-                    </div>
-
-                    <div className="flex items-center gap-1">
-                      <ShieldCheck size={14} className="text-green-400" />
-                      <span className="text-[10px] font-mono text-green-400 font-bold tracking-wider select-none">VERIFIED</span>
-                    </div>
-                  </div>
+                  <span className="text-[10px] text-zinc-400 font-mono">
+                    {exp.status}
+                  </span>
 
                 </div>
 
@@ -86,7 +106,6 @@ export default function ExperienceSection() {
           ))}
 
         </div>
-
       </div>
     </section>
   );

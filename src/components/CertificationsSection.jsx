@@ -1,21 +1,7 @@
 import { motion } from 'motion/react';
 import { Award, ShieldCheck, Ticket } from 'lucide-react';
+import { CERT_BADGES_ROW_1, CERT_BADGES_ROW_2 } from '../data.js';
 
-const CERT_BADGES_ROW_1 = [
-  { name: "🏆 Python Fundamentals", issuer: "Guido Academy / SoloLearn" },
-  { name: "✨ Front End Development", issuer: "Meta Authorized / Coursera" },
-  { name: "🤖 AI for Beginners", issuer: "Microsoft Learn Certificate" },
-  { name: "📊 Microsoft Office Specialist", issuer: "Microsoft Certification" },
-  { name: "🎓 Advanced Software Eng. (ADSE)", issuer: "Aptech Academic" }
-];
-
-const CERT_BADGES_ROW_2 = [
-  { name: "🚀 Flutter Core Architecture", issuer: "Flutter Community" },
-  { name: "📦 Firebase Enterprise Cloud", issuer: "Google Developer Hub" },
-  { name: "🗄️ Relational Database SQL", issuer: "Aptech Enterprise" },
-  { name: "🌐 Front-End Systems", issuer: "SoloLearn Certified" },
-  { name: "🛠️ VCS Git Automation", issuer: "GitHub Core Certification" }
-];
 
 export default function CertificationsSection() {
   // Triple-multiply lists for seamless infinite scroll
