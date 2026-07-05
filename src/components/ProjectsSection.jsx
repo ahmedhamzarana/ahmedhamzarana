@@ -12,6 +12,7 @@ const TABS = [
 
 export default function ProjectsSection() {
   const [activeTab, setActiveTab] = useState('all');
+  const [DialogOpen, setDialogOpen] = useState(false);
 
   // ✅ CLEAN FILTER (ONLY ONE LOGIC)
   const filteredProjects =
