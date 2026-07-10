@@ -120,54 +120,57 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-12 sm:mt-16 grid grid-cols-3 gap-4 pt-8 border-t border-white/5 max-w-lg"
-          >
-            <div className="flex items-center gap-2">
-              <div className="p-2 rounded bg-zinc-900 border border-white/5 text-yellow-400">
-                <Terminal size={14} />
-              </div>
-              <div>
-                <span className="block text-white text-sm font-semibold">
-                  8+ Projects
-                </span>
-                <span className="text-[10px] text-zinc-500 uppercase">
-                  Built Native
-                </span>
-              </div>
-            </div>
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.8, delay: 0.5 }}
+  className="mt-12 sm:mt-16 grid grid-cols-3 gap-2 sm:gap-4 pt-8 border-t border-white/5"
+>
+  <div className="flex items-center gap-2 min-w-0">
+    <div className="flex-shrink-0 p-2 rounded bg-zinc-900 border border-white/5 text-yellow-400">
+      <Terminal size={14} />
+    </div>
 
-            <div className="flex items-center gap-2">
-              <div className="p-2 rounded bg-zinc-900 border border-white/5 text-yellow-400">
-                <Award size={14} />
-              </div>
-              <div>
-                <span className="block text-white text-sm font-semibold">
-                  4+ Certs
-                </span>
-                <span className="text-[10px] text-zinc-500 uppercase">
-                  Recognized
-                </span>
-              </div>
-            </div>
+    <div className="min-w-0">
+      <span className="block text-white text-xs sm:text-sm font-semibold whitespace-nowrap">
+        8+ Projects
+      </span>
+      <span className="block text-[9px] sm:text-[10px] text-zinc-500 uppercase whitespace-nowrap">
+        Built Native
+      </span>
+    </div>
+  </div>
 
-            <div className="flex items-center gap-2">
-              <div className="p-2 rounded bg-zinc-900 border border-white/5 text-yellow-400">
-                <Smartphone size={14} />
-              </div>
-              <div>
-                <span className="block text-white text-sm font-semibold">
-                  Mobile
-                </span>
-                <span className="text-[10px] text-zinc-500 uppercase">
-                  Native UX
-                </span>
-              </div>
-            </div>
-          </motion.div>
+  <div className="flex items-center gap-2 min-w-0">
+    <div className="flex-shrink-0 p-2 rounded bg-zinc-900 border border-white/5 text-yellow-400">
+      <Award size={14} />
+    </div>
+
+    <div className="min-w-0">
+      <span className="block text-white text-xs sm:text-sm font-semibold whitespace-nowrap">
+        4+ Certs
+      </span>
+      <span className="block text-[9px] sm:text-[10px] text-zinc-500 uppercase whitespace-nowrap">
+        Recognized
+      </span>
+    </div>
+  </div>
+
+  <div className="flex items-center gap-2 min-w-0">
+    <div className="flex-shrink-0 p-2 rounded bg-zinc-900 border border-white/5 text-yellow-400">
+      <Smartphone size={14} />
+    </div>
+
+    <div className="min-w-0">
+      <span className="block text-white text-xs sm:text-sm font-semibold whitespace-nowrap">
+        Mobile
+      </span>
+      <span className="block text-[9px] sm:text-[10px] text-zinc-500 uppercase whitespace-nowrap">
+        Native UX
+      </span>
+    </div>
+  </div>
+</motion.div>
         </div>
 
         {/* Right Column - Profile Card */}
